@@ -21,7 +21,7 @@ app.controller("productController", function ($scope, $http) {
         console.log(response.data)
     })
     $scope.addProduct = function (index) {
-        $http.post('products/store',{firstname: 'aaa'}).then(function (response) {
+        $http.post('products/store','aaa').then(function (response) {
             console.log(response.data)
         })
     }

@@ -11,7 +11,7 @@ class ProductController
 
     public function store()
     {
-        $id = $_REQUEST['uri'];
+        $id = $_POST['id'];
         print_r($id);
     }
 
