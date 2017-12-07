@@ -4,6 +4,6 @@ class HomeController
 {
     public function index()
     {
-        return include_once '../views/home.html';
+        return include_once '../AW/views/home.html';
     }
 }

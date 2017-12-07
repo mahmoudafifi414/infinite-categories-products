@@ -10,5 +10,11 @@ include_once 'controllers/ProductController.php';
 include_once 'controllers/HomeController.php';
 $router=new RouterResolver();
 $router->add('home','HomeController@index');
-$router->add('products','ProductController@index');
+
+//products routes
+$router->add('products/all','ProductController@index');
+$router->add('products/store','ProductController@index');
+$router->add('products/update/id','ProductController@index');
+$router->add('products/delete/id','ProductController@index');
+//categories routes
 $router->submit();

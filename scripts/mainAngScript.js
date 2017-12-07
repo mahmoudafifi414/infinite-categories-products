@@ -1,23 +1,26 @@
 var app = angular.module("myApp", ["ngRoute"]);
-app.config(function ($routeProvider) {
+app.config(function($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "paris.htm",
+            templateUrl : "paris.htm",
         })
         .when("/categories", {
-            templateUrl: "views/categories.html",
-            controller: "categoryController"
+            templateUrl : "views/categories.html",
+            controller : "categoryController"
         })
         .when("/products", {
-            templateUrl: "views/products.html",
-            controller: "productController"
+            templateUrl : "views/products.html",
+            controller : "productController"
         });
 });
 app.controller("productController", function ($scope, $http) {
     $scope.enableEditing = false;
-    $http.get('products/all').success(function (response) {
-        console.log(response)
-    })
+    $scope.products = [
+        {"name": "mahmoud", "category": "SW", "photo": "gggg.jpg"},
+        {"name": "mahmoud", "category": "SW", "photo": "gggg.jpg"},
+        {"name": "mahmoud", "category": "SW", "photo": "gggg.jpg"},
+        {"name": "mahmoud", "category": "SW", "photo": "gggg.jpg"},
+    ]
     $scope.addProduct = function (index) {
         $scope.products.push(
             {"name": $scope.name, "category": $scope.category, "photo": $scope.photo}
