@@ -13,8 +13,6 @@ $router->add('home','HomeController@index');
 
 //products routes
 $router->add('products/all','ProductController@index');
-$router->add('products/store','ProductController@index');
-$router->add('products/update/id','ProductController@index');
-$router->add('products/delete/id','ProductController@index');
+$router->add('products/store','ProductController@store');
 //categories routes
 $router->submit();

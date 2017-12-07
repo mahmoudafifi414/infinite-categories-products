@@ -10,15 +10,11 @@
                     <tr>
                         <th>Product</th>
                         <th>Photo</th>
-                        <th>Category</th>
                         <th>Status</th>
                     </tr>
                     <tr>
                         <td>
                             <input type="text" ng-model="name" class="form-control">
-                        </td>
-                        <td>
-                            <input type="text" ng-model="category" class="form-control">
                         </td>
                         <td>
                             <input type="text" ng-model="photo" class="form-control">
@@ -32,10 +28,7 @@
                             {{product.name}}
                         </td>
                         <td>
-                            {{product.category}}
-                        </td>
-                        <td>
-                            {{product .photo}}
+                            {{product.image}}
                         </td>
                         <td>
                             <button class="btn btn-danger" ng-click="deleteProduct($index)">Delete</button>

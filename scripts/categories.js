@@ -15,14 +15,15 @@ app.config(function ($routeProvider) {
 });
 app.controller("productController", function ($scope, $http) {
     $scope.enableEditing = false;
-    $http.get('products/all').success(function (response) {
-        console.log(response)
+    $scope.products = '';
+    $http.get('products/all').then(function (response) {
+        $scope.products = response.data;
+        console.log(response.data)
     })
     $scope.addProduct = function (index) {
-        $scope.products.push(
-            {"name": $scope.name, "category": $scope.category, "photo": $scope.photo}
-        )
-        alert(index)
+        $http.post('products/store',{firstname: 'aaa'}).then(function (response) {
+            console.log(response.data)
+        })
     }
     $scope.deleteProduct = function (index) {
         $scope.products.splice(index, 1)
