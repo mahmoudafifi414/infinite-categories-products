@@ -9,6 +9,7 @@ use config\RouterResolver;
 include_once 'controllers/ProductController.php';
 include_once 'controllers/CategoryController.php';
 include_once 'controllers/HomeController.php';
+include_once 'controllers/UserController.php';
 $router = new RouterResolver();
 $router->add('home', 'HomeController@index');
 
@@ -21,4 +22,7 @@ $router->add('products/delete/id', 'ProductController@delete');
 $router->add('categories/all', 'CategoryController@index');
 $router->add('categories/store', 'CategoryController@store');
 $router->add('categories/delete/id', 'CategoryController@delete');
+//user routes
+$router->add('user/login', 'UserController@login');
+$router->add('user/register', 'UserController@register');
 $router->submit();
