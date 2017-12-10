@@ -1,66 +1,55 @@
-<div>
-    <?php include 'add_cat.php'; ?>
-    <div class='ui centered card' style="width: 1000px;">
-        <div class="content" v-show="!isEditing">
-            <div class='header'>
-                {{ name }}
-            </div>
-            <div class='meta'>
-                <li v-for="num in todo.numbers">
-                    {{ num }}
-                    <span class='right floated trash icon' v-on:click="deleteNumber(num)">
-      <i class='trash icon'></i>
-    </span>
-                </li>
-            </div>
-            <div class='extra content'>
-          <span class='right floated edit icon' v-on:click="showForm">
-          <i class='edit icon'></i>
-        </span>
-            </div>
-            <span class='right floated trash icon' v-on:click="deleteTodo(todo)">
-      <i class='trash icon'></i>
-    </span>
-            <span class='right floated trash icon' v-on:click="addNewNumber">
-      <i class='plus icon'></i>
-    </span>
-
-        </div>
-        <div class="content" v-show="isEditing">
-            <div class='ui form'>
-                <div class='field'>
-                    <label>Name</label>
-                    <input type='text' v-model="todo.name">
-                </div>
-                <div class='field'>
-                    <label>Phone Number</label>
-                    <input type='text' v-model="todo.numbers">
-                </div>
-                <div class='ui two button attached buttons'>
-                    <button class='ui basic blue button' v-on:click="sendForm()">
-                        Create
-                    </button>
-                    <button class='ui basic red button' v-on:click="hideForm">
-                        Close X
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="content" v-show="isAddingNumber">
-            <div class='ui form'>
-                <div class='field'>
-                    <label>New Phone Number</label>
-                    <input type='text' v-model="newNum">
-                </div>
-                <div class='ui two button attached buttons'>
-                    <button class='ui basic blue button' v-on:click="sendNewNumber()">
-                        Create
-                    </button>
-                    <button class='ui basic red button' v-on:click="hideNewNumberForm">
-                        Close X
-                    </button>
+<div class="container">
+    <div>
+        <div class='ui basic content aligned segment'>
+            <button ng-click="onAdd()" class="btn btn-primary" style="margin-left: 350px; width: 400px; height: 50px;">
+                Add Category
+            </button>
+            <div class='ui centered card' ng-show="enableAdding">
+                <div class='content'>
+                    <div class='ui form'>
+                        <div class='field'>
+                            <label>Category Name</label>
+                            <input ng-model="cat_name" type='text' defaultValue="">
+                        </div>
+                        <div class='field'>
+                            <label>Parent Category</label>
+                            <select ng-model="cat_parent"
+                                    ng-options="cat.name for cat in categories">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class='ui two button attached buttons'>
+                            <button class='ui basic blue button' ng-click="sendForm()">
+                                Save
+                            </button>
+                            <button class='ui basic red button' ng-click="closeForm()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div>
+        <div class="row" ng-repeat="cat in categories" ng-if="!cat.parent_id"
+             style="border: 2px solid black; padding:25px; margin: 25px;">
+            <h2>
+                {{cat.name}}
+                <span style="margin-left: 100px;">
+                    <button class="btn-sm btn-danger" ng-click="deleteCategory(cat.id)">delete</button>
+                    <button class="btn-sm btn-info">edit</button>
+                </span>
+            </h2>
+
+            <ul>
+                <ul style="border: 2px solid black; padding:25px; margin: 25px;" id="cats{{cat.id}}"><b
+                        style="color: #0ea432">sub Categories</b></ul>
+                <ul style="border: 2px solid black; padding: 25px; margin: 25px;" id="prod{{cat.id}}"><b
+                        style="color: #0ea432">Products</b></ul>
+            </ul>
+        </div>
+    </div>
+
+</div>
 </div>

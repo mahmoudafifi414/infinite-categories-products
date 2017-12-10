@@ -9,7 +9,8 @@
                 <table class="table table-hover">
                     <tr>
                         <th>Product</th>
-                        <th>Photo</th>
+                        <th>category</th>
+                        <th>Image</th>
                         <th>Status</th>
                     </tr>
                     <tr>
@@ -17,7 +18,12 @@
                             <input type="text" ng-model="name" class="form-control">
                         </td>
                         <td>
-                            <input type="text" ng-model="photo" class="form-control">
+                            <select class="form-control" ng-model="product_cat"
+                                    ng-options="cat.name for cat in categories">
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="image" class="form-control">
                         </td>
                         <td>
                             <button class="btn btn-primary" ng-click="addProduct()">Add</button>
@@ -25,14 +31,33 @@
                     </tr>
                     <tr ng-repeat="product in products">
                         <td>
-                            {{product.name}}
+                            <input type="text" ng-model="productrr" class="form-control"
+                                   ng-if="enableEditing == product.id">
+                            <h4 ng-if="enableEditing != product.id">{{product.name}}</h4>
                         </td>
                         <td>
-                            {{product.image}}
+                            <input type="text" ng-model="product.image" class="form-control"
+                                   ng-if="enableEditing == product.id">
+                            <h4 ng-if="enableEditing != product.id">{{product.categories.name}}</h4>
                         </td>
                         <td>
-                            <button class="btn btn-danger" ng-click="deleteProduct($index)">Delete</button>
-                            <button class="btn btn-info" ng-click="editProduct($index)">Edit</button>
+                            <input type="text" ng-model="product.image" class="form-control"
+                                   ng-if="enableEditing == product.id">
+                            <h4 ng-if="enableEditing != product.id">{{product.image}}</h4>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" ng-if="enableEditing != product.id"
+                                    ng-click="deleteProduct(product.id)">Delete
+                            </button>
+                            <button class="btn btn-info" ng-if="enableEditing != product.id"
+                                    ng-click="editProduct(product.id)">Edit
+                            </button>
+                            <button class="btn btn-info" ng-if="enableEditing == product.id"
+                                    ng-click="updateProduct(product.id)">Update
+                            </button>
+                            <button class="btn btn-info" ng-if="enableEditing == product.id" ng-click="cancelEditing()">
+                                Cancel
+                            </button>
                         </td>
                     </tr>
                 </table>

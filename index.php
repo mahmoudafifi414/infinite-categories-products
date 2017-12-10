@@ -7,12 +7,18 @@ include_once 'config/database.php';
 use config\RouterResolver;
 
 include_once 'controllers/ProductController.php';
+include_once 'controllers/CategoryController.php';
 include_once 'controllers/HomeController.php';
-$router=new RouterResolver();
-$router->add('home','HomeController@index');
+$router = new RouterResolver();
+$router->add('home', 'HomeController@index');
 
 //products routes
-$router->add('products/all','ProductController@index');
-$router->add('products/store','ProductController@store');
+$router->add('products/all', 'ProductController@index');
+$router->add('products/store', 'ProductController@store');
+$router->add('products/update', 'ProductController@update');
+$router->add('products/delete/id', 'ProductController@delete');
 //categories routes
+$router->add('categories/all', 'CategoryController@index');
+$router->add('categories/store', 'CategoryController@store');
+$router->add('categories/delete/id', 'CategoryController@delete');
 $router->submit();
