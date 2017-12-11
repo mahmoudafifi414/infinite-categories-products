@@ -12,7 +12,7 @@
 
     <label><b>Repeat Password</b></label>
     <input type="password" ng-model="confirm" placeholder="Repeat Password" name="psw-repeat" required>
-    <input type="checkbox" checked="checked"> Remember me
+    <input type="checkbox" ng-model="remember" checked="checked"> Remember me
     <div class="clearfix">
         <button ng-click="signUp()" class="signupbtn">Sign Up</button>
     </div>
